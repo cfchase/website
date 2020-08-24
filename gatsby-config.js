@@ -1,47 +1,39 @@
 module.exports = {
-  pathPrefix: "/website",
-  assetPrefix: `http://localhost:8000`,
+  pathPrefix: "/gatsby-playground",
   siteMetadata: {
-    title: `OpenDataHub`,
-    email: `opendatahub@redhat.com`,
-    description: `OpenDataHub`,
-    author: `@redhat`,
-    repo: `https://gitlab.com/opendatahub`, 
-    email_list: `https://lists.opendatahub.io/admin/lists/`,
-    siteUrl: `http://localhost:8000/`
+    title: `Pandas Eating Lots`,
+    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    author: `cfchase`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `src`,
+        path: `${__dirname}/src`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-transformer-remark`,
+    `gatsby-plugin-emotion`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-typography`,
       options: {
-        name: `markdown_posts`,
-        path: `${__dirname}/src/markdown-posts/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown_pages`,
-        path: `${__dirname}/markdown-pages/docs/`,
-      },
-    },
-    `gatsby-plugin-offline`,
-    `gatsby-transformer-yaml`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `YAML_files`,
-        path: `${__dirname}/data/`,
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
