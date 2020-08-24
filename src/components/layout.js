@@ -1,49 +1,30 @@
-import React from "react"
-import { css } from "@emotion/core"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import React from 'react'
 
-import { rhythm } from "../utils/typography"
-export default function Layout({ children }) {
-  const data = useStaticQuery(
-    graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `
-  )
-  return (
-    <div
-      css={css`
-        margin: 0 auto;
-        max-width: 700px;
-        padding: ${rhythm(2)};
-        padding-top: ${rhythm(1.5)};
-      `}
-    >
-      <Link to={`/`}>
-        <h3
-          css={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline-block;
-            font-style: normal;
-          `}
-        >
-          {data.site.siteMetadata.title}
-        </h3>
-      </Link>
-      <Link
-        to={`/about/`}
-        css={css`
-          float: right;
-        `}
-      >
-        About
-      </Link>
-      {children}
-    </div>
-  )
+import Header from './header'
+import Nav from "./navbar"
+import '../styles/_home.scss'
+import ParticleScript from './scripts'
+import Footer from './footer'
+const Layout = (props) => {
+
+    return(
+        <React.Fragment>
+            <head>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous"></link>
+            <script defer src="assets/js/main.js"></script>
+            </head>
+            <Header />
+           
+            <Nav />
+            {props.children}
+            <Footer />
+            <ParticleScript />
+            
+        </React.Fragment>
+
+    )
+
+
 }
+
+export default Layout
